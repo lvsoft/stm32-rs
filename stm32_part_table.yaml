@@ -611,3 +611,12 @@ stm32wl:
     rm_url: https://www.st.com/resource/en/reference_manual/dm00530369-stm32wlex-advanced-armbased-32bit-mcus-with-subghz-radio-solution-stmicroelectronics.pdf
     members:
       - STM32WLE5
+
+gd32e2:
+  gd32e23x:
+    url: https://www.gigadevice.com/zh-hans/products/microcontrollers/gd32/arm-cortex-m23/value-line/gd32e230-series/
+    rm: GD32E23x
+    rm_title: GD32E23x
+    rm_url: https://www.gigadevice.com/manual/gd32e230xxxx-user-manual/
+    members:
+      - GD32E230
