@@ -1,0 +1,479 @@
+_add:
+  # currently there's no official SVD files released from GigaDevice,
+  # let's write one step by step
+  ADC_Common:
+    description: GD32 ADC common registers
+    groupName: ADC
+    baseAddress: 0x40012400
+    addressBlock:
+      offset: 0
+      size: 0x80
+      usage: registers
+    registers:
+      ADC_STAT:
+        description: ADC Status register.
+        addressOffset: 0x0
+        access: read-write      # read clear, write 0
+        resetValue: 0x00000000
+        fields:
+          STRC:
+            description: Start flag of regular channel group
+            bitOffset: 4
+            bitWidth: 1
+          STIC:
+            description: Start flag of inserted channel group
+            bitOffset: 3
+            bitWidth: 1
+          EOIC:
+            description: End of inserted group conversion flag
+            bitOffset: 2
+            bitWidth: 1
+          EOC:
+            description: End of group conversion flag
+            bitOffset: 1
+            bitWidth: 1
+          WDE:
+            description: Analog watchdog event flag
+            bitOffset: 0
+            bitWidth: 1
+
+      ADC_CTL0:
+        description: ADC Control register 0
+        addressOffset: 0x04
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          DRES:
+            description: ADC resolution
+            bitOffset: 24
+            bitWidth: 2
+          RWDEN:
+            description: Regular channel analog watchdog enable
+            bitOffset: 23
+            bitWidth: 1
+          IWDEN:
+            description: Inserted channel analog watchdog enable
+            bitOffset: 22
+            bitWidth: 1
+          DISNUM:
+            description: Number of conversions in discontinuous mode
+            bitOffset: 13
+            bitWidth: 2
+          DISIC:
+            description: Discontinuous mode on inserted channels
+            bitOffset: 12
+            bitWidth: 1
+          DISRC:
+            description: Discontinuous mode on regular channels
+            bitOffset: 11
+            bitWidth: 2
+          ICA:
+            description: Inserted channel group convert automatically
+            bitOffset: 10
+            bitWidth: 1
+          WDSC:
+            description: When in scan mode, analog watchdog is effective on a single channel
+            bitOffset: 9
+            bitWidth: 1
+          SM:
+            description: Scan mode
+            bitOffset: 8
+            bitWidth: 1
+          EOICIE:
+            description: Interrupt enable for EOIC
+            bitOffset: 7
+            bitWidth: 1
+          WDEIE:
+            description: Interrupt enable for WDE
+            bitOffset: 6
+            bitWidth: 1
+          EOCIE:
+            description: Interrupt enable for EOC
+            bitOffset: 5
+            bitWidth: 1
+          WDCHSEL:
+            description: Analog watchdog channel select
+            bitOffset: 0
+            bitWidth: 4
+
+      ADC_CTL1:
+        description: ADC Control register 1
+        addressOffset: 0x08
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          TSVREN:
+            description: Channel 16 and 17 enable of ADC.
+            bitOffset: 23
+            bitWidth: 1
+          SWRCST:
+            description: Start on regular channel. 
+            bitOffset: 22
+            bitWidth: 1
+          SWICST:
+            description: Start on inserted channel.
+            bitOffset: 21
+            bitWidth: 1
+          ETERC:
+            description: External trigger enable for regular channel
+            bitOffset: 20
+            bitWidth: 1
+          ETSRC:
+            description: External trigger select for regular channel
+            bitOffset: 17
+            bitWidth: 3
+          ETEIC:
+            description: External trigger enable for inserted channel
+            bitOffset: 15
+            bitWidth: 1
+          ETSIC:
+            description: External trigger select for inserted channel
+            bitOffset: 12
+            bitWidth: 3
+          DAL:
+            description: Data alignment
+            bitOffset: 11
+            bitWidth: 1
+          DMA:
+            description: DMA request enable.
+            bitOffset: 8
+            bitWidth: 1           
+          RSTCLB:
+            description: Reset calibration
+            bitOffset: 3
+            bitWidth: 1
+          CLB:
+            description: ADC calibration
+            bitOffset: 2
+            bitWidth: 1
+          CTN:
+            description: Continuous mode
+            bitOffset: 1
+            bitWidth: 1
+          ADCON:
+            description: ADC ON.
+            bitOffset: 0
+            bitWidth: 1
+
+      ADC_SAMPT0:
+        description: ADC Sample time register 0
+        addressOffset: 0x0c
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          SPT17:
+            description: Refer to SPT16[2:0] description
+            bitOffset: 21
+            bitWidth: 3
+          SPT16:
+            description: Channel sampling time
+            bitOffset: 18
+            bitWidth: 3
+
+      ADC_SAMPT1:
+        description: ADC Sample time register 1
+        addressOffset: 0x10
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          SPT9:
+            description: Refer to SPT0[2:0] description
+            bitOffset: 27
+            bitWidth: 3
+          SPT8:
+            description: Refer to SPT0[2:0] description
+            bitOffset: 24
+            bitWidth: 3
+          SPT7:
+            description: Refer to SPT0[2:0] description
+            bitOffset: 21
+            bitWidth: 3
+          SPT6:
+            description: Refer to SPT0[2:0] description
+            bitOffset: 18
+            bitWidth: 3
+          SPT5:
+            description: Refer to SPT0[2:0] description
+            bitOffset: 15
+            bitWidth: 3
+          SPT4:
+            description: Refer to SPT0[2:0] description
+            bitOffset: 12
+            bitWidth: 3
+          SPT3:
+            description: Refer to SPT0[2:0] description
+            bitOffset: 9
+            bitWidth: 3
+          SPT2:
+            description: Refer to SPT0[2:0] description
+            bitOffset: 6
+            bitWidth: 3
+          SPT1:
+            description: Refer to SPT0[2:0] description
+            bitOffset: 3
+            bitWidth: 3
+          SPT0:
+            description: Channel sampling time
+            bitOffset: 0
+            bitWidth: 3
+
+      ADC_IOFF0:
+        description: ADC Inserted channel data offset register 0
+        addressOffset: 0x14
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          IOFF:
+            description: Data offset for inserted channel 0
+            bitOffset: 0
+            bitWidth: 12
+
+      ADC_IOFF1:
+        description: ADC Inserted channel data offset register 1
+        addressOffset: 0x18
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          IOFF:
+            description: Data offset for inserted channel 1
+            bitOffset: 0
+            bitWidth: 12
+
+      ADC_IOFF2:
+        description: ADC Inserted channel data offset register 2
+        addressOffset: 0x1c
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          IOFF:
+            description: Data offset for inserted channel 2
+            bitOffset: 0
+            bitWidth: 12
+
+      ADC_IOFF3:
+        description: ADC Inserted channel data offset register 3
+        addressOffset: 0x20
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          IOFF:
+            description: Data offset for inserted channel 3
+            bitOffset: 0
+            bitWidth: 12
+
+      ADC_WDHT:
+        description: ADC Watchdog high threshold register
+        addressOffset: 0x24
+        access: read-write
+        resetValue: 0x00000FFF
+        fields:
+          WDHT:
+            description: Analog watchdog high threshold
+            bitOffset: 0
+            bitWidth: 12
+                        
+      ADC_WDLT:
+        description: ADC Watchdog low threshold register
+        addressOffset: 0x28
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          WDLT:
+            description: Analog watchdog low threshold
+            bitOffset: 0
+            bitWidth: 12
+      
+      ADC_RSQ0:
+        description: ADC Regular sequence register 0
+        addressOffset: 0x2c
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          RL:
+            description: Regular channel group length
+            bitOffset: 20
+            bitWidth: 4
+          RSQ15:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 15
+            bitWidth: 5
+          RSQ14:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 10
+            bitWidth: 5
+          RSQ13:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 5
+            bitWidth: 5
+          RSQ12:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 0
+            bitWidth: 5
+          
+      ADC_RSQ1:
+        description: ADC Regular sequence register 1
+        addressOffset: 0x30
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          RSQ11:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 25
+            bitWidth: 5
+          RSQ10:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 20
+            bitWidth: 5
+          RSQ9:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 15
+            bitWidth: 5
+          RSQ8:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 10
+            bitWidth: 5
+          RSQ7:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 5
+            bitWidth: 5
+          RSQ6:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 0
+            bitWidth: 5
+
+      ADC_RSQ2:
+        description: ADC Regular sequence register 2
+        addressOffset: 0x34
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          RSQ5:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 25
+            bitWidth: 5
+          RSQ4:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 20
+            bitWidth: 5
+          RSQ3:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 15
+            bitWidth: 5
+          RSQ2:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 10
+            bitWidth: 5
+          RSQ1:
+            description: Refer to RSQ0[4:0] description
+            bitOffset: 5
+            bitWidth: 5
+          RSQ0:
+            description: The channel number (0..9, 16, 17) is written to these bits to select a channel as the nth conversion in the regular channel group.
+            bitOffset: 0
+            bitWidth: 5
+          
+      ADC_ISQ:
+        description: ADC Inserted sequence register
+        addressOffset: 0x38
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          IL:
+            description: Inserted channel group length.
+            bitOffset: 20
+            bitWidth: 2
+          ISQ3:
+            description:  Refer to ISQ0[4:0] description
+            bitOffset: 15
+            bitWidth: 5
+          ISQ2:
+            description: Refer to ISQ0[4:0] description
+            bitOffset: 10
+            bitWidth: 5
+          ISQ1:
+            description: Refer to ISQ0[4:0] description
+            bitOffset: 5
+            bitWidth: 5
+          ISQ0:
+            description: The channel number (0..9, 16, 17) is written to these bits to select a channel as the nth conversion in the inserted channel group.
+            bitOffset: 0
+            bitWidth: 5
+          
+      ADC_IDATA0:
+        description: ADC Inserted data register 0
+        addressOffset: 0x3c
+        access: read-only
+        resetValue: 0x00000000
+        fields:
+          IDATA:
+            description: Inserted number 0 conversion data
+            bitOffset: 0
+            bitWidth: 16
+
+      ADC_IDATA1:
+        description: ADC Inserted data register 1
+        addressOffset: 0x40
+        access: read-only
+        resetValue: 0x00000000
+        fields:
+          IDATA:
+            description: Inserted number 1 conversion data
+            bitOffset: 0
+            bitWidth: 16
+
+      ADC_IDATA2:
+        description: ADC Inserted data register 2
+        addressOffset: 0x44
+        access: read-only
+        resetValue: 0x00000000
+        fields:
+          IDATA:
+            description: Inserted number 2 conversion data
+            bitOffset: 0
+            bitWidth: 16
+
+      ADC_IDATA3:
+        description: ADC Inserted data register 3
+        addressOffset: 0x48
+        access: read-only
+        resetValue: 0x00000000
+        fields:
+          IDATA:
+            description: Inserted number 3 conversion data
+            bitOffset: 0
+            bitWidth: 16
+            
+      ADC_RDATA:
+        description: ADC Regular data register
+        addressOffset: 0x4c
+        access: read-only
+        resetValue: 0x00000000
+        fields:
+          RDATA:
+            description: Regular channel data
+            bitOffset: 0
+            bitWidth: 16
+
+      ADC_OVSAMPCTL:
+        description: ADC Inserted data register 1
+        addressOffset: 0x80
+        access: read-write
+        resetValue: 0x00000000
+        fields:
+          TVOS:
+            description: Triggered Oversampling
+            bitOffset: 9
+            bitWidth: 1
+          OVSS:
+            description: Oversampling shift
+            bitOffset: 5
+            bitWidth: 4
+          OVSR:
+            description: Oversampling ratio
+            bitOffset: 2
+            bitWidth: 3
+          OVSEN:
+            description: Oversampling enable
+            bitOffset: 0
+            bitWidth: 1
+

@@ -9,10 +9,9 @@ Flash:
       RAM_PARITY_CHECK:
         bitWidth: 1
 
-# TIM3 is 16-bit, whilst TIM2 is 32-bit
-_copy:
-  TIM3:
-    from: TIM2
+
+_delete:
+  - ADC
 
 _include:
  - ./common_patches/rename_RCC_CIR_HSI14RDYIE_field.yaml
@@ -73,3 +72,4 @@ _include:
  - ../peripherals/tim/tim_ccm_v1.yaml
  - ./common_patches/2_nvic_prio_bits.yaml
  - ./common_patches/f0_crc_init_addr_fix.yaml
+ - ./gd32_patches/gd32_adc_common.yaml
