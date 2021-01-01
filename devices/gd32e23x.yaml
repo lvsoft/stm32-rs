@@ -9,10 +9,6 @@ Flash:
       RAM_PARITY_CHECK:
         bitWidth: 1
 
-
-_delete:
-  - ADC
-
 _include:
  - ./common_patches/rename_RCC_CIR_HSI14RDYIE_field.yaml
  - ./common_patches/rename_f0_SPI_registers.yaml
@@ -72,4 +68,12 @@ _include:
  - ../peripherals/tim/tim_ccm_v1.yaml
  - ./common_patches/2_nvic_prio_bits.yaml
  - ./common_patches/f0_crc_init_addr_fix.yaml
+
+
+# replace stm32f0x1's adc config with gd32's
+_delete:
+  - ADC
+
+_include:
  - ./gd32_patches/gd32_adc_common.yaml
+ - ./gd32_patches/gd32_adc_common_enum.yaml

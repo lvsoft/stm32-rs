@@ -1,0 +1,82 @@
+ADC:
+  ADC_STAT:
+    STRC:
+      NoEvent: [0, "No regular channel group started"]
+      Event: [1, "Regular channel group started"]
+    STIC:
+      NoEvent: [0, "No inserted channel group started"]
+      Event: [1, "Inserted channel group started"]
+    EOIC:
+      NoEvent: [0, "No end of inserted group conversion"]
+      Event: [1, "End of inserted group conversion"]
+    EOC:
+      NoEvent: [0, "No end of group conversion"]
+      Event: [1, "End of group conversion"]
+    WDE:
+      NoEvent: [0, "No analog watchdog event"]
+      Event: [1, "Analog watchdog event"]
+
+  ADC_CTL0:
+    DRES:
+      TwelveBit: [0, "12bit"]
+      TenBit: [1, "10bit"]
+      EightBit: [2, "8bit"]
+      SixBit: [3, "6bit"]
+    RWDEN:
+      Disabled: [0, "Regular channel analog watchdog disable"]
+      Enabled: [1, "Regular channel analog watchdog enable"]
+    IWDEN:
+      Disable: [0, "Inserted channel analog watchdog disable"]
+      Enable: [1, "Inserted channel analog watchdog enable"]
+    DISIC:
+      Disable: [0, "Discontinuous mode on inserted channels disable"]
+      Enable: [1, "Discontinuous mode on inserted channels enable"]
+    DISRC:
+      Disable: [0, "Discontinuous mode on regular channels disable"]
+      Enable: [1, "Discontinuous mode on regular channels enable"]
+    ICA:
+      Disable: [0, "Inserted channel group convert automatically disable"]
+      Enable: [1, "Inserted channel group convert automatically enable"]
+    WDSC:
+      AllChannels: [0, "Analog watchdog is effective on all channels"]
+      SingleChannel: [1, "Analog watchdog is effective on a single channel"
+    SM:
+      Disable: [0, "Scan mode disable"]
+      Enable: 1, "Scan mode enable"]
+    EOICIE:
+      Disable: [0, "EOIC interrupt disable"]
+      Enable: [1, "EOIC interrupt enable"]
+    WDEIE:
+      Disable: [0, "WDE interrupt disable"]
+      Enable: [1, "WDE interrupt enable"]
+    EOCIE:
+      Disable: [0, "EOC interrupt disable"]
+      Enable: [1, "EOC interrupt enable"]
+    WDCHSEL:
+      ADC0: [0, "00000: ADC channel 0"]
+      ADC1: [1, "00001: ADC channel 1"]
+      ADC2: [2, "00010: ADC channel 2"]
+      ADC3: [3, "00011: ADC channel 3"]
+      ADC4: [4, "00100: ADC channel 4"]
+      ADC5: [5, "00101: ADC channel 5"]
+      ADC6: [6, "00110: ADC channel 6"]
+      ADC7: [7, "00111: ADC channel 7"]
+      ADC8: [8, "01000: ADC channel 8"]
+      ADC9: [9, "01001: ADC channel 9"]
+      ADC16: [16, "10000: ADC channel 16"]
+      ADC17: [17, "10001: ADC channel 17"]
+
+  ADC_CTL1:
+    TSVREN:
+      Disable: [0, "Channel 16 and 17 of ADC disable"]
+      Enable: [1, "Channel 16 and 17 of ADC enable"]
+    SWICST:
+      Set: [1, "starts the conversion of an inserted channel group if ETSIC is 111."]
+    ETERC:
+      Disable: [0, "External trigger for regular channel disable"]
+      Enable: [1, "External trigger for regular channel enable"]
+      
+
+
+  
+
