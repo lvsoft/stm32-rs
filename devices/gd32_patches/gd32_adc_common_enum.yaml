@@ -1,20 +1,35 @@
 ADC:
   ADC_STAT:
     STRC:
-      NoEvent: [0, "No regular channel group started"]
-      Event: [1, "Regular channel group started"]
+      _read:
+        NoEvent: [0, "No regular channel group started"]
+        Event: [1, "Regular channel group started"]
+      _write:
+        Clear: [0, "clear"]
     STIC:
-      NoEvent: [0, "No inserted channel group started"]
-      Event: [1, "Inserted channel group started"]
+      _read:
+        NoEvent: [0, "No inserted channel group started"]
+        Event: [1, "Inserted channel group started"]
+      _write:
+        Clear: [0, "clear"]
     EOIC:
-      NoEvent: [0, "No end of inserted group conversion"]
-      Event: [1, "End of inserted group conversion"]
+      _read:
+        NoEvent: [0, "No end of inserted group conversion"]
+        Event: [1, "End of inserted group conversion"]
+      _write:
+        Clear: [0, "clear"]
     EOC:
-      NoEvent: [0, "No end of group conversion"]
-      Event: [1, "End of group conversion"]
+      _read:
+        NoEvent: [0, "No end of group conversion"]
+        Event: [1, "End of group conversion"]
+      _write:
+        Clear: [0, "clear"]
     WDE:
-      NoEvent: [0, "No analog watchdog event"]
-      Event: [1, "Analog watchdog event"]
+      _read:
+        NoEvent: [0, "No analog watchdog event"]
+        Event: [1, "Analog watchdog event"]
+      _write:
+        Clear: [0, "clear"]
 
   ADC_CTL0:
     DRES:
@@ -23,8 +38,8 @@ ADC:
       EightBit: [2, "8bit"]
       SixBit: [3, "6bit"]
     RWDEN:
-      Disabled: [0, "Regular channel analog watchdog disable"]
-      Enabled: [1, "Regular channel analog watchdog enable"]
+      Disable: [0, "Regular channel analog watchdog disable"]
+      Enable: [1, "Regular channel analog watchdog enable"]
     IWDEN:
       Disable: [0, "Inserted channel analog watchdog disable"]
       Enable: [1, "Inserted channel analog watchdog enable"]
@@ -39,10 +54,10 @@ ADC:
       Enable: [1, "Inserted channel group convert automatically enable"]
     WDSC:
       AllChannels: [0, "Analog watchdog is effective on all channels"]
-      SingleChannel: [1, "Analog watchdog is effective on a single channel"
+      SingleChannel: [1, "Analog watchdog is effective on a single channel"]
     SM:
       Disable: [0, "Scan mode disable"]
-      Enable: 1, "Scan mode enable"]
+      Enable: [1, "Scan mode enable"]
     EOICIE:
       Disable: [0, "EOIC interrupt disable"]
       Enable: [1, "EOIC interrupt enable"]
@@ -75,8 +90,85 @@ ADC:
     ETERC:
       Disable: [0, "External trigger for regular channel disable"]
       Enable: [1, "External trigger for regular channel enable"]
+    ETSRC:
+      TIM0_CH0: [0, "000: TIMER0 CH0"]
+      TIM0_CH1: [1, "001: TIMER0 CH1"]
+      TIM0_CH2: [2, "010: TIMER0 CH2"]
+      TIM2_TRG: [4, "100: TIMER2 TRGO"]
+      TIM14_CH0: [5, "101: TIMER14 CH0"]
+      EXTI_Line11: [6, "110: EXTI line 11"]
+      SWRCST: [7, "111: SWRCST"]
+    ETEIC:
+      Disable: [0, "External trigger for inserted channel disable"]
+      Enable: [1, "External trigger for inserted channel enable"]
+    ETSIC:
+      TIM0_TRG: [0, "000: TIMER0 TRGO"]
+      TIM0_CH3: [1, "001: TIMER0 CH3"]
+      TIM2_CH3: [4, "100: TIMER2 CH3"]
+      TIM14_TRG: [5, "101: TIMER14 TRGO"]
+      EXTI_Line15: [6, "110: EXTI line15"]
+      SWICST: [7, "111: SWICST"]
+    DAL:
+      Right: [0, "0: right alignment"]
+      Left: [1, "1: left alignment"]
+    DMA:
+      Disable: [0, "0: DMA request disable"]
+      Enable: [1, "1: DMA request enable"]
+    RSTCLB:
+      InitDone: [0, "0: Calibration register initialization done."]
+      StartCalibration: [1, "1: Calibration register initialization starts"]
+    CLB:
+      Done: [0, "0: Calibration done"]
+      Start: [1, "1: Calibration start"]
+    CTN:
+      Disable: [0, "0: Continuous mode disable"]
+      Enable: [1, "1: Continuous mode enable"]
+    ADCON:
+      Disable: [0, "0: ADC disable and power down"]
+      Enable: [1, "1: ADC enable"]
       
+  "ADC_SAMPT?":
+    "SPT*":
+      Cycles1_5: [0, "1.5 cycles"]
+      Cycles7_5: [1, "7.5 cycles"]
+      Cycles13_5: [2, "13.5 cycles"]
+      Cycles28_5: [3, "28.5 cycles"]
+      Cycles41_5: [4, "41.5 cycles"]
+      Cycles55_5: [5, "55.5 cycles"]
+      Cycles71_5: [6, "71.5 cycles"]
+      Cycles239_5: [7, "239.5 cycles"]
 
-
-  
-
+  ADC_ISQ:
+    ISQ0:
+      ISQ0123: [ 3, "ISQ0>>ISQ1>>ISQ2>>ISQ3"]
+      ISQ123: [ 2, "ISQ1>>ISQ2>>ISQ3"]
+      ISQ23: [ 1, "ISQ2>>ISQ3"]
+      ISQ3: [ 0, "ISQ3"]
+      
+  ADC_OVSAMPCTL:
+    TVOS:
+      Consecutively: [0, "0: All oversampling conversions for a channel are done consecutively after a trigger"]
+      OneConvert: [1, "1: Each conversion needs a trigger for a oversampled channel and the number of triggers is determined by the oversampling ratio(OVSR[2:0])"]
+    OVSS:
+      NoShfit: [0, "0000: No shift"]
+      Shfit1bit: [1, "0001: Shift 1 bit"]
+      Shfit2bits: [2, "0010: Shift 2 bits"]
+      Shfit3bits: [3, "0011: Shift 3 bits"]
+      Shfit4bits: [4, "0100: Shift 4 bits"]
+      Shfit5bits: [5, "0101: Shift 5 bits"]
+      Shfit6bits: [6, "0110: Shift 6 bits"]
+      Shift7bits: [7, "0111: Shift 7 bits"]
+      Shift8bits: [8, "1000: Shift 8 bits"]
+    OVSR:
+      x2: [0, "000: 2x"]
+      x4: [1, "001: 4x"]
+      x8: [2, "010: 8x"]
+      x16: [3, "011: 16x"]
+      x32: [4, "100: 32x"]
+      x64: [5, "101: 64x"]
+      x128: [6, "110: 128x"]
+      x256: [7, "111: 256x"]
+    OVSEN:
+      Disable: [0, "0: Oversampling disabled"]
+      Enable: [1, "1: Oversampling enabled"]
+      

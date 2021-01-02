@@ -11,3 +11,4 @@ mmaps/
 
 # automatically generated crates
 /stm32*/
+/gd32*/

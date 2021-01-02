@@ -121,7 +121,7 @@ _add:
             bitOffset: 5
             bitWidth: 1
           WDCHSEL:
-            description:
+            description: >
               Analog watchdog channel select
 
               Note: ADC analog inputs Channel 16 and Channel 17 are internally connected to
@@ -162,55 +162,23 @@ _add:
             bitOffset: 20
             bitWidth: 1
           ETSRC:
-            description:
-              External trigger select for regular channel
-              
-              000: TIMER0 CH0
-              001: TIMER0 CH1
-              010: TIMER0 CH2
-              011: reserved
-              100: TIMER2 TRGO
-              101: TIMER14 CH0
-              110: EXTI line 11
-              111: SWRCST
+            description: External trigger select for regular channel
             bitOffset: 17
             bitWidth: 3
           ETEIC:
-            description:
-              External trigger enable for inserted channel
-
-              0: External trigger for inserted channel disable
-              1: External trigger for inserted channel enable
+            description: External trigger enable for inserted channel
             bitOffset: 15
             bitWidth: 1
           ETSIC:
-            description:
-              External trigger select for inserted channel
-              
-              000: TIMER0 TRGO
-              001: TIMER0 CH3
-              010: reserved
-              011: reserved
-              100: TIMER2 CH3
-              101: TIMER14 TRGO
-              110: EXTI line15
-              111: SWICST
+            description: External trigger select for inserted channel
             bitOffset: 12
             bitWidth: 3
           DAL:
-            description:
-              Data alignment
-              
-              0: right alignment
-              1: left alignment
+            description: Data alignment
             bitOffset: 11
             bitWidth: 1
           DMA:
-            description:
-              DMA request enable.
-              
-              0: DMA request disable
-              1: DMA request enable
+            description: DMA request enable.
             bitOffset: 8
             bitWidth: 1           
           RSTCLB:
@@ -219,25 +187,14 @@ _add:
               
               This bit is set by software and cleared by hardware after the calibration registers are
               initialized.
-              
-              0: Calibration register initialization done.
-              1: Calibration register initialization starts
             bitOffset: 3
             bitWidth: 1
           CLB:
-            description:
-              ADC calibration
-
-              0: Calibration done
-              1: Calibration start
+            description: ADC calibration
             bitOffset: 2
             bitWidth: 1
           CTN:
-            description:
-              Continuous mode
-
-              0: Continuous mode disable
-              1: Continuous mode enable
+            description: Continuous mode
             bitOffset: 1
             bitWidth: 1
           ADCON:
@@ -247,9 +204,6 @@ _add:
               The ADC will be waked up when this bit is changed from low to high and take a
               stabilization time. When this bit is high and “1” is written to it with other bits of this
               register unchanged, the conversion will start.
-              
-              0: ADC disable and power down
-              1: ADC enable
             bitOffset: 0
             bitWidth: 1
 
@@ -264,17 +218,7 @@ _add:
             bitOffset: 21
             bitWidth: 3
           SPT16:
-            description:
-              Channel sampling time
-
-              000: 1.5 cycles
-              001: 7.5 cycles
-              010: 13.5 cycles
-              011: 28.5 cycles
-              100: 41.5 cycles
-              101: 55.5 cycles
-              110: 71.5 cycles
-              111: 239.5 cycles
+            description: Channel sampling time
             bitOffset: 18
             bitWidth: 3
 
@@ -321,17 +265,7 @@ _add:
             bitOffset: 3
             bitWidth: 3
           SPT0:
-            description:
-              Channel sampling time
-              
-              000: 1.5 cycles
-              001: 7.5 cycles
-              010: 13.5 cycles
-              011: 28.5 cycles
-              100: 41.5 cycles
-              101: 55.5 cycles
-              110: 71.5 cycles
-              111: 239.5 cycles
+            description: Channel sampling time
             bitOffset: 0
             bitWidth: 3
 
@@ -635,67 +569,40 @@ _add:
         resetValue: 0x00000000
         fields:
           TVOS:
-            description:
+            description: >
               Triggered Oversampling
               
               This bit is set and cleared by software.
 
-              0: All oversampling conversions for a channel are done consecutively after a trigger
-
-              1: Each conversion needs a trigger for a oversampled channel and the number of
-              triggers is determined by the oversampling ratio(OVSR[2:0]).
-              
               Note: Software is allowed to write this bit only when ADCON=0 (which ensures that
               no conversion is ongoing)
             bitOffset: 9
             bitWidth: 1
           OVSS:
-            description:
+            description: >
               Oversampling shift
 
               These bits are set and cleared by software.
-              
-              0000: No shift
-              0001: Shift 1 bit
-              0010: Shift 2 bits
-              0011: Shift 3 bits
-              0100: Shift 4 bits
-              0101: Shift 5 bits
-              0110: Shift 6 bits
-              0111: Shift 7 bits
-              1000: Shift 8 bits
-              Other: reserved
               
               Note: Software is allowed to write this bit only when ADCON =0 (which ensures that
               no conversion is ongoing).
             bitOffset: 5
             bitWidth: 4
           OVSR:
-            description:
+            description: >
               Oversampling ratio
 
               This bit filed defines the number of oversampling ratio.
-              000: 2x
-              001: 4x
-              010: 8x
-              011: 16x
-              100: 32x
-              101: 64x
-              110: 128x
-              111: 256x
-              
+            
               Note: Software is allowed to write this bit only when ADCON =0 (which ensures that
               no conversion is ongoing).
             bitOffset: 2
             bitWidth: 3
           OVSEN:
-            description:
+            description: >
               Oversampling enable
 
               This bit is set and cleared by software.
-              
-              0: Oversampling disabled
-              1: Oversampling enabled
               
               Note: Software is allowed to write this bit only when ADCON =0 (which ensures that
               no conversion is ongoing).
