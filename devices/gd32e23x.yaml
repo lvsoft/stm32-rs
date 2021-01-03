@@ -9,14 +9,17 @@ Flash:
       RAM_PARITY_CHECK:
         bitWidth: 1
 
+_delete:
+  - ADC
+
 _include:
  - ./common_patches/rename_RCC_CIR_HSI14RDYIE_field.yaml
  - ./common_patches/rename_f0_SPI_registers.yaml
  - ./common_patches/merge_I2C_CR2_SADDx_fields.yaml
  - ./common_patches/merge_I2C_OAR1_OA1x_fields.yaml
  - ./common_patches/f0_v18pwrrstf.yaml
- - ./common_patches/f0_adc_cfgr2_ckmode.yaml
- - ./common_patches/f0_adc_fixes.yaml
+# - ./common_patches/f0_adc_cfgr2_ckmode.yaml
+# - ./common_patches/f0_adc_fixes.yaml
  - ./common_patches/f0_gpioe.yaml
  - ./common_patches/f0_usart3.yaml
  - ./common_patches/f0_usart6.yaml
@@ -59,7 +62,7 @@ _include:
  - common_patches/tsc/tsc.yaml
  - ../peripherals/syscfg/syscfg_f0x128.yaml
  - ../peripherals/comp/comp_f0.yaml
- - ../peripherals/adc/adc_aditf4_v1_1_RM0091.yaml
+# - ../peripherals/adc/adc_aditf4_v1_1_RM0091.yaml
  - ../peripherals/spi/spi_v2.yaml
  - common_patches/tim/tim_ccr.yaml
  - ../peripherals/usb/usb_with_LPM.yaml
@@ -68,12 +71,9 @@ _include:
  - ../peripherals/tim/tim_ccm_v1.yaml
  - ./common_patches/2_nvic_prio_bits.yaml
  - ./common_patches/f0_crc_init_addr_fix.yaml
+ - ./gd32_patches/gd32_adc_common.yaml
+ - ./gd32_patches/gd32_adc_common_enum.yaml
 
 
 # replace stm32f0x1's adc config with gd32's
-_delete:
-  - ADC
 
-_include:
- - ./gd32_patches/gd32_adc_common.yaml
- - ./gd32_patches/gd32_adc_common_enum.yaml
